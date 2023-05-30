@@ -41,12 +41,9 @@ def scrape_dependencies():
     html_text = requests.get(SAMSUNG_URL).text
     soup = BeautifulSoup(html_text, 'lxml')
 
-    # Select elements using CSS selectors
     elements = soup.select('#el-main-container tr > td:nth-child(2) > a')
-
-    # Iterate over the selected elements
     for package in elements:
-        # Perform operations on each element
+        # Adding the packages to the database
         insert_dependency(package.text)
 
 scrape_dependencies()
