@@ -1,3 +1,6 @@
+import json
+import psycopg2
+
 class Database:
     def __init__(self, config_file):
         self.config_file = config_file
@@ -44,8 +47,8 @@ class Database:
         cursor.close()
 
 
-    def insert_dependency(self, package_name, package_version=None):
-        insert_query = "INSERT INTO porsche_dependencies (package_name, package_version) VALUES (%s, %s)"
+    def insert_dependency(self, package_name, table_name, package_version=None):
+        insert_query = f"INSERT INTO {table_name} (package_name, package_version) VALUES (%s, %s)"
         values = (package_name, package_version)
 
         cursor = self.connection.cursor()
