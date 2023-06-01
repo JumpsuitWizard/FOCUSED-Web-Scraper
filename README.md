@@ -15,9 +15,8 @@ This repository contains a collection of scrapers designed to extract open sourc
 
 ## Blocked Scrapers
 
-1. Adobe: The Adobe scraper is currently blocked due to technical difficulties. We are actively working on resolving the issues to unblock the scraper and enable data extraction from Adobe products and services. Updates will be provided as we make progress.
-
-2. Meta: The Meta scraper is currently blocked. We are working on overcoming the challenges and unblocking the scraper to extract data from Meta platforms. Further updates will be shared as the blockers are resolved.
+1. Adobe
+2. Meta
 
 
 ## Contact
