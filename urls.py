@@ -1,7 +1,0 @@
-SPOTIFY_URL = 'https://developer.spotify.com/third-party-licenses#embedded-sdk-third-party-licenses'
-DISCORD_URL = 'https://discord.com/licenses'
-PORSCHE_URL = 'https://connect-store.porsche.com/licenses.txt'
-ADOBE_URL = 'https://www.adobe.com/products/eula/third_party.html'
-SLACK_URL = 'https://slack.com/libs/desktop'
-SAMSUNG_URL = 'https://developer.samsung.com/open-source?location=us'
-CISCO_URL = 'https://www.cisco.com/en/US/docs/security/csa/csa602/license/opensource_thirdparty.html'

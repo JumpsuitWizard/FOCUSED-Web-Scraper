@@ -14,7 +14,6 @@ class Database:
     def read_config(self):
         with open(self.config_file) as f:
             config = json.load(f)
-            print(config)
             self.host = config.get('host')
             self.user = config.get('user')
             self.password = config.get('password')

@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import psycopg2
 import re
-from urls import DISCORD_URL
+from config.urls  import DISCORD_URL
 
 def create_connection():
     connection = psycopg2.connect(

@@ -3,7 +3,7 @@ import requests
 import psycopg2
 from urls import CISCO_URL
 import re
-from database import Database
+from utils.database import Database
 
 def scrape_dependencies():
 
