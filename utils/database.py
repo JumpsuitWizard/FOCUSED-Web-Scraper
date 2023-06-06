@@ -1,6 +1,7 @@
 import json
 import psycopg2
 
+
 class Database:
     def __init__(self, config_file):
         self.config_file = config_file
@@ -44,7 +45,6 @@ class Database:
         cursor = self.connection.cursor()
         cursor.execute(create_table_query)
         cursor.close()
-
 
     def insert_dependency(self, package_name, table_name, package_version=None):
         insert_query = f"INSERT INTO {table_name} (package_name, package_version) VALUES (%s, %s)"

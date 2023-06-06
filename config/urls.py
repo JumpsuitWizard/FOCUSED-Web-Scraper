@@ -10,3 +10,5 @@ BROADCOM_URL = 'https://techdocs.broadcom.com/us/en/symantec-security-software/i
 CONFLUENT_URL = 'https://www.confluent.io/third_party_software/platform/'
 GENERIC_URL = 'https://landscape.todogroup.org/'
 APPLE_MAPS_URL='https://www.apple.com/legal/internet-services/maps/oss-acknowledgements/'
+BOSCH_URL = 'https://developer.bosch.com/3rdpartylicenses.html'
+SMARTSHEET_URL = 'https://www.smartsheet.com/legal/acknowledgements'
