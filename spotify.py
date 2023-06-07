@@ -11,7 +11,7 @@ def create_connection():
         user='postgres',
         password='admin',
         database='dependencies',
-        port= '5432'
+        port='5432'
     )
     return connection
 
@@ -38,10 +38,6 @@ def insert_dependency(package_name):
 
 
 def scrape_dependencies():
-    # db = Database(config_file='db_config.json')
-    # db.read_config()
-    # db.connect()
-    # db.create_table(spotify_dependencies)
 
     html_text = requests.get(SPOTIFY_URL).text
     soup = BeautifulSoup(html_text, 'lxml')
@@ -51,10 +47,10 @@ def scrape_dependencies():
 
     for index, value in enumerate(dependencies):
         package_name = value.text
-        if index == 0 or index==1:
+        if index == 0 or index == 1:
             continue
         else:
             insert_dependency(package_name)
-            # db.insert_dependency(package_name, None)
+
 
 scrape_dependencies()
