@@ -12,12 +12,13 @@ This repository contains a collection of scrapers designed to extract open sourc
 6. Discord
 7. Broadcom
 8. Confluent
-
-## Blocked Scrapers
-
-1. Adobe
-2. Meta
-
+9. Adlock
+10. Apple Maps
+11. Bocada
+12. Bosch
+13. Meta Ray Ban
+14. Panapto
+15. Smartsheet
 
 ## Contact
 
