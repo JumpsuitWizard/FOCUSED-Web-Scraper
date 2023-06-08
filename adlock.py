@@ -1,8 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-import psycopg2
 from config.urls import ADLOCK_URL
-import re
 from utils.database import Database
 
 

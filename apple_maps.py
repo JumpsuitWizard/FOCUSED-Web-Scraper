@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
-import psycopg2
 from config.urls import APPLE_MAPS_URL
 import re
 from utils.database import Database
+
 
 def scrape_dependencies():
 
@@ -24,11 +24,11 @@ def scrape_dependencies():
             if b_tag:
                 selected_elements.append(b_tag.text)
 
-
     for package in selected_elements:
         matches = re.findall(r'\((.*?)\)', package)
         if matches:
             extracted_content = matches[0]
             db.insert_dependency(extracted_content, table_name)
+
 
 scrape_dependencies()

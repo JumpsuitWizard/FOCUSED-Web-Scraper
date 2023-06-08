@@ -16,3 +16,5 @@ META_RAY_BAN = 'https://www.meta.com/legal/ray-ban-stories/third-party-notices-a
 PANAPTO_URL = 'https://support.panopto.com/s/article/open-source-acknowledgements'
 ADLOCK_URL = 'https://adlock.com/acknowledgements/'
 BOCADA_URL = 'https://www.bocada.com/third-party-licenses/'
+SPARK_TRADER_URL = 'https://sparktrader.com/credits'
+CAMUNDA_URL = 'https://docs.camunda.org/manual/7.19/introduction/third-party-libraries/camunda-bpm-platform-license-book/'
