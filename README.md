@@ -19,6 +19,11 @@ This repository contains a collection of scrapers designed to extract open sourc
 13. Meta Ray Ban
 14. Panapto
 15. Smartsheet
+16. Spark
+17. Camunda
+18. Oracle Fusion Platform
+19. Box
+20. Parasoft Enterprise
 
 ## Contact
 
