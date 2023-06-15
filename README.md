@@ -24,6 +24,10 @@ This repository contains a collection of scrapers designed to extract open sourc
 18. Oracle Fusion Platform
 19. Box
 20. Parasoft Enterprise
+21. Clue.io
+22. Cognition
+23. Nvidia
+24. Shoott
 
 ## Contact
 
