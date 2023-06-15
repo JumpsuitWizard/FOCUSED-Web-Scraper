@@ -10,7 +10,8 @@ def scrape_dependencies():
     db = Database(config_file='config/db_config.json')
     db.read_config()
     db.connect()
-    table_name = 'apple_maps_dependencies'
+    table_name = 'all_dependencies'
+    company_name = 'apple maps'
     db.create_table(table_name)
 
     html_text = requests.get(APPLE_MAPS_URL).text
@@ -28,7 +29,7 @@ def scrape_dependencies():
         matches = re.findall(r'\((.*?)\)', package)
         if matches:
             extracted_content = matches[0]
-            db.insert_dependency(extracted_content, table_name)
+            db.insert_dependency(extracted_content, table_name, company_name)
 
 
 scrape_dependencies()

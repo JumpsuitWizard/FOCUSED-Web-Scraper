@@ -5,27 +5,23 @@ from config.urls import BOSCH_URL
 import re
 from utils.database import Database
 
-def connect_db(table_name):
-    db = Database(config_file='config/db_config.json')
-    db.read_config()
-    db.connect()
-    db.create_table(table_name)
 
 def scrape_dependencies():
 
     db = Database(config_file='config/db_config.json')
     db.read_config()
     db.connect()
-    table_name = 'bosch_dependencies'
+    table_name = 'all_dependencies'
+    company_name = 'bosch'
     db.create_table(table_name)
 
     # Added this header to mimic browser
     headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     }
     html_text = requests.get(BOSCH_URL, headers=headers).text
     soup = BeautifulSoup(html_text, 'lxml')
-    #regex way
+    # regex way
     # lines = soup.find_all(string=lambda text: re.search(r'^@{1,2}\w+', text))
 
     lines = [line for line in soup.stripped_strings if line.startswith('@')]
@@ -34,6 +30,8 @@ def scrape_dependencies():
         parts = line.rsplit(' - ', 1)
         if len(parts) == 2:
             package_name, version = parts
-            db.insert_dependency(package_name.strip(), table_name, version.split(":")[1])
+            db.insert_dependency(package_name.strip(
+            ), table_name, company_name, version.split(":")[1])
+
 
 scrape_dependencies()

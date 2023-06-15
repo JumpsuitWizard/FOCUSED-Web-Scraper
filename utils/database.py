@@ -38,6 +38,7 @@ class Database:
         create_table_query = f'''
             CREATE TABLE IF NOT EXISTS {table_name} (
                 id serial PRIMARY KEY,
+                company_name character varying(255),
                 package_name character varying(255),
                 package_version character varying(255)
             )'''
@@ -46,9 +47,9 @@ class Database:
         cursor.execute(create_table_query)
         cursor.close()
 
-    def insert_dependency(self, package_name, table_name, package_version=None):
-        insert_query = f"INSERT INTO {table_name} (package_name, package_version) VALUES (%s, %s)"
-        values = (package_name, package_version)
+    def insert_dependency(self, package_name, table_name, company_name, package_version=None):
+        insert_query = f"INSERT INTO {table_name} (company_name, package_name, package_version) VALUES (%s, %s, %s)"
+        values = (company_name, package_name, package_version)
 
         cursor = self.connection.cursor()
         cursor.execute(insert_query, values)

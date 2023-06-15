@@ -21,3 +21,7 @@ CAMUNDA_URL = 'https://docs.camunda.org/manual/7.19/introduction/third-party-lib
 ORACLE_FUSION_URL = 'https://docs.oracle.com/en/middleware/fusion-middleware/fmwlc/third-party-licenses-z-new-structure-new-topic.html#GUID-0B3F8A49-094C-496F-831F-8E8D39F72787'
 BOX_URL = 'https://www.box.com/legal/acknowledgements'
 PARASOFT_URL = 'https://docs.parasoft.com/display/JTEST1042/Third-Party+Acknowledgements'
+COGNITION_URL = 'https://www.cognition.run/acknowledgements'
+SHOOTT_URL = 'https://www.shoott.com/acknowledgements'
+CLUE_IO_URL = 'https://clue.io/acknowledgements'
+NVIDIA_URL = 'https://docs.nvidia.com/tao/tao-toolkit/text/acknowledgements.html'
