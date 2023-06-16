@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 from config.urls import CAMUNDA_URL
 from utils.database import Database
+from utils.utility import remove_at_symbol
 
 
 def scrape_dependencies():
@@ -27,7 +28,8 @@ def scrape_dependencies():
                                                last_at_index], package[last_at_index + 1:]
         if package_name.lower() not in package_name_set:
             package_name_set.add(package_name.lower())
-            db.insert_dependency(package_name, table_name,
+            package = remove_at_symbol(package_name)
+            db.insert_dependency(package, table_name,
                                  company_name, version_number)
 
 

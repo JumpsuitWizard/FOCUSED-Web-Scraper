@@ -4,6 +4,7 @@ import psycopg2
 from config.urls import BOSCH_URL
 import re
 from utils.database import Database
+from utils.utility import remove_at_symbol
 
 
 def scrape_dependencies():
@@ -30,8 +31,10 @@ def scrape_dependencies():
         parts = line.rsplit(' - ', 1)
         if len(parts) == 2:
             package_name, version = parts
-            db.insert_dependency(package_name.strip(
-            ), table_name, company_name, version.split(":")[1])
+            package = remove_at_symbol(package_name.strip(
+            ))
+            db.insert_dependency(package, table_name,
+                                 company_name, version.split(":")[1])
 
 
 scrape_dependencies()
