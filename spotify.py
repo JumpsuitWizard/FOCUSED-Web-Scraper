@@ -1,43 +1,20 @@
 from bs4 import BeautifulSoup
 import requests
 import psycopg2
-from database import Database
-from urls import SPOTIFY_URL
-
-
-def create_connection():
-    connection = psycopg2.connect(
-        host='localhost',
-        user='postgres',
-        password='admin',
-        database='dependencies',
-        port='5432'
-    )
-    return connection
-
-
-def insert_dependency(package_name):
-    connection = create_connection()
-    cursor = connection.cursor()
-    create_table_query = '''
-        CREATE TABLE IF NOT EXISTS spotify_dependencies (
-            id serial PRIMARY KEY,
-            package_name character varying(255)
-        )'''
-
-    cursor.execute(create_table_query)
-
-    insert_query = "INSERT INTO spotify_dependencies (package_name) VALUES (%s)"
-    values = (package_name,)
-
-    cursor.execute(insert_query, values)
-    connection.commit()
-
-    cursor.close()
-    connection.close()
+from utils.database import Database
+from utils.utility import remove_at_symbol
+from config.urls import SPOTIFY_URL
 
 
 def scrape_dependencies():
+
+    db = Database(config_file='config/db_config.json')
+    db.read_config()
+    db.connect()
+    # table_name = 'spotify_dependencies'
+    table_name = 'all_dependencies'
+    company_name = 'spotify'
+    db.create_table(table_name)
 
     html_text = requests.get(SPOTIFY_URL).text
     soup = BeautifulSoup(html_text, 'lxml')
@@ -45,12 +22,13 @@ def scrape_dependencies():
     dependencies = soup.find_all('div', class_='sc-589317f5-1 hPDpvs')
     dependency_list = []
 
-    for index, value in enumerate(dependencies):
-        package_name = value.text
-        if index == 0 or index == 1:
-            continue
-        else:
-            insert_dependency(package_name)
+    package_name_set = set()
+
+    for element in dependencies[2:]:
+        if element.text.lower() not in package_name_set:
+            value = remove_at_symbol(element.text)
+            package_name_set.add(value.lower())
+            db.insert_dependency(value, table_name, company_name)
 
 
 scrape_dependencies()

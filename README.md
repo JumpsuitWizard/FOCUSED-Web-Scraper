@@ -1,6 +1,6 @@
 # FOCUSED-Web-Scraper
 
-This repository contains a collection of scrapers designed to extract open source dependencies from various websites and platforms. The scrapers are developed using a combination of web scraping techniques and data extraction methods. 
+This repository contains a collection of scrapers designed to extract open source dependencies from various websites and platforms. The scrapers are developed using a combination of web scraping techniques and data extraction methods.
 
 ## Completed Scrapers
 
@@ -31,6 +31,6 @@ This repository contains a collection of scrapers designed to extract open sourc
 
 ## Contact
 
-If you have any questions, suggestions, or encounter any issues while using the scrapers, please don't hesitate to contact us. 
+If you have any questions, suggestions, or encounter any issues while using the scrapers, please don't hesitate to contact us.
 
 Team at Open@RIT

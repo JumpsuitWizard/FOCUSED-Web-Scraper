@@ -2,6 +2,10 @@ from bs4 import BeautifulSoup
 import requests
 from config.urls import ADLOCK_URL
 from utils.database import Database
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+
+# Disable the warning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 
 def scrape_dependencies():
