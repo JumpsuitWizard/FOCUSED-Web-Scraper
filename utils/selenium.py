@@ -12,6 +12,8 @@ def get_dynamic_html(url):
     # Create ChromeOptions object and set headless mode
     chrome_options = Options()
     chrome_options.add_argument('--headless')  # Run Chrome in headless mode
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
 
     # Create a Service object with the path to the WebDriver executable
     service = Service(webdriver_path)

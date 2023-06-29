@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  focused_webapp:
+    container_name: focused_webapp
+    image: focused_live_app:1.0.0
+    build: .
+    ports: 
+      - "4000:4000"
+    environment:
+      # - DB_URL = postgresql://postgres:admin@my-postgres-container:5432/dependencies
+      - HOST=172.17.0.2
+      - USERNAME=postgres
+      - PASSWORD=admin
+      - DATABASE=dependencies
+      - PORT=5432
