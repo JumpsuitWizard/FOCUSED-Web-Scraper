@@ -3,17 +3,24 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import time
+from pathlib import Path
 
 
 def get_dynamic_html(url):
     # Path to the Chrome WebDriver executable
-    webdriver_path = '/path/to/chromedriver'
+    # for local
+    # webdriver_path = '/path/to/chromedriver'
+    # for docker
+    webdriver_path = str(Path("/usr/local/bin/chromedriver"))
 
     # Create ChromeOptions object and set headless mode
     chrome_options = Options()
-    chrome_options.add_argument('--headless')  # Run Chrome in headless mode
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_prefs = {}
+    chrome_options.experimental_options["prefs"] = chrome_prefs
+    chrome_prefs["profile.default_content_settings"] = {"images": 2}
 
     # Create a Service object with the path to the WebDriver executable
     service = Service(webdriver_path)

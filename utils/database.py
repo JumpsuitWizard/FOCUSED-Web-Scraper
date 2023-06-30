@@ -22,13 +22,19 @@ class Database:
             self.port = config.get('port')
 
     def connect(self):
-        self.connection = psycopg2.connect(
-            host=self.host,
-            user=self.user,
-            password=self.password,
-            database=self.database,
-            port=self.port
-        )
+        try:
+            self.connection = psycopg2.connect(
+                host=self.host,
+                user=self.user,
+                password=self.password,
+                database=self.database,
+                port=self.port
+            )
+            return self.connection
+
+        except (psycopg2.Error, Exception) as error:
+            print("Error connecting to the PostgreSQL database:", error)
+            return None
 
     def close(self):
         if self.connection:

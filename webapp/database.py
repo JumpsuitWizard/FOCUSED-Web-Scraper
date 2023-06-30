@@ -6,20 +6,13 @@ from bom import Bom
 
 def get_connection():
     try:
-        host = os.getenv('HOST')
-        user = os.getenv('USERNAME')
-        password = os.getenv('PASSWORD')
-        database = os.getenv('DATABASE')
-        port = os.getenv('PORT')
-
         connection = psycopg2.connect(
-            host=host,
-            user=user,
-            password=password,
-            database=database,
-            port=port
+            host="postgres",
+            user="postgres",
+            password="admin",
+            database="dependencies",
+            port="5432"
         )
-        print(host)
         print('Connected to database')
         return connection
 
