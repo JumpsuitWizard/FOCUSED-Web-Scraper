@@ -1,0 +1,21 @@
+FROM selenium/standalone-chrome:latest
+
+# Install necessary dependencies
+USER root
+RUN apt-get update && apt-get install -y wget unzip
+
+# Install Google Chrome
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+RUN apt-get -y update
+RUN apt-get install -y google-chrome-stable
+
+# Install ChromeDriver (version 114.0.5735.90 for Chrome version 114)
+RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
+RUN unzip /tmp/chromedriver.zip -d /usr/local/bin/
+
+# Set display port
+ENV DISPLAY=:99
+
+# Switch back to the default user
+USER seluser

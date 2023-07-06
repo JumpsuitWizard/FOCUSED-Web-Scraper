@@ -32,7 +32,10 @@ services:
       - postgres
 
   selenium:
-    image: selenium/standalone-chrome:latest  
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile.selenium
     container_name: selenium-container
 
   postgres:

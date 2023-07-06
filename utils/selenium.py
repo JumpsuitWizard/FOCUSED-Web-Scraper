@@ -11,22 +11,24 @@ def get_dynamic_html(url):
     # for local
     # webdriver_path = '/path/to/chromedriver'
     # for docker
-    webdriver_path = str(Path("/usr/local/bin/chromedriver"))
+    # webdriver_path = str(Path("/usr/local/bin/chromedriver"))
 
     # Create ChromeOptions object and set headless mode
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--verbose")
     chrome_prefs = {}
     chrome_options.experimental_options["prefs"] = chrome_prefs
     chrome_prefs["profile.default_content_settings"] = {"images": 2}
 
     # Create a Service object with the path to the WebDriver executable
-    service = Service(webdriver_path)
+    # service = Service(webdriver_path)
 
     # Create a new instance of the Chrome driver with headless mode
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    # driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options)
 
     # Set the user agent string
     driver.execute_cdp_cmd(
