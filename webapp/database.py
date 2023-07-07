@@ -68,9 +68,16 @@ def get_dependency_by_company(company_name):
                     "SELECT company_name FROM all_dependencies WHERE LOWER(package_name) = LOWER(%s)",
                     (package_name,)
                 )
-                common_authors = [
-                    author[0] for author in cursor.fetchall() if author[0] != company_name
-                ]
+                common_authors_set = set()  # Store unique authors for each package
+
+                for author in cursor.fetchall():
+                    author_name = author[0]
+                    if author_name != company_name:
+                        common_authors_set.add(author_name)
+
+                # Convert the set of common authors to a list
+                common_authors = list(common_authors_set)
+
                 # Add each dependency as a component to the BOM
                 bom.add_component_with_shared_authors(
                     "library", package_name, package_version, company_name, common_authors

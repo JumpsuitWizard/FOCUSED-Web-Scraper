@@ -9,11 +9,14 @@ python_files = [
 
 
 def execute_python_file(file_name):
-    subprocess.run(["python3", file_name])
+    try:
+        subprocess.run(["python3", file_name], check=True)
+        print(f"{file_name} executed successfully")
+    except subprocess.CalledProcessError as e:
+        print(f"Error executing {file_name}: {e}")
 
 
 if __name__ == "__main__":
     for file_name in python_files:
         execute_python_file(file_name)
-        print(f"{file_name} executed successfully")
     print("All the dependencies have been added successfully")
