@@ -12,8 +12,8 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin
     depends_on:
-      - selenium
-      - postgres
+      postgres:
+        condition: service_healthy
 
   focused_webapp:
     restart: always
@@ -49,6 +49,11 @@ services:
       - POSTGRES_DB=dependencies
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     expose:
       - "5432"
 
