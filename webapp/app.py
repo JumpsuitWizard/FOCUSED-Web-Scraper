@@ -4,6 +4,7 @@ from database import (
     get_dependency_by_company,
     get_common_dependency,
     get_list_dependencies,
+    get_package_count
 )
 
 app = Flask(__name__)
@@ -35,4 +36,10 @@ def get_common_dependency_route(company, package_name):
 @app.route("/dependencies/package/<package_name>", methods=["GET"])
 def get_list_dependencies_route(package_name):
     bom_dict = get_list_dependencies(package_name)
+    return jsonify(bom_dict)
+
+
+@app.route("/dependencies/package/count", methods=["GET"])
+def get_package_count_route():
+    bom_dict = get_package_count()
     return jsonify(bom_dict)

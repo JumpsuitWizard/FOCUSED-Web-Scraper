@@ -16,6 +16,14 @@ class Bom:
         }
         self.components.append(component)
 
+    def add_package_count(self, component_type, name, count):
+        component = {
+            "type": component_type,
+            "name": name,
+            "count": count
+        }
+        self.components.append(component)
+
     def add_component_with_shared_authors(self, component_type, name, version, company_name, shared_authors):
         component = {
             "type": component_type,

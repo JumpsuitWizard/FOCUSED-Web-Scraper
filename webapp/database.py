@@ -143,3 +143,27 @@ def get_list_dependencies(package_name):
             bom_dict = bom.to_dict()
 
     return bom_dict
+
+
+def get_package_count():
+    connection = get_connection()
+
+    with connection:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "SELECT package_name, count(*) as count FROM all_dependencies GROUP BY package_name ORDER BY count DESC")
+            rows = cursor.fetchall()
+
+            bom = Bom()
+
+            response_data = []
+            for row in rows:
+                package_name = row[0]
+                package_count = row[1]
+                # Add the component to the Bom
+                bom.add_package_count("library", package_name,
+                                      package_count)
+            # Convert the Bom to a dictionary
+            bom_dict = bom.to_dict()
+
+    return bom_dict
