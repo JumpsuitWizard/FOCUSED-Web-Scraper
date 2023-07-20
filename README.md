@@ -60,6 +60,12 @@ We have the following Scrapers:
 22. Cognition
 23. Nvidia
 24. Shoott
+25. Meta Ray Ban
+26. Panapto
+27. Giphy
+28. Flexera
+29. Parsec
+30. Spaceti
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

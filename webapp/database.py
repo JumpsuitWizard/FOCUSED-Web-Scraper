@@ -151,7 +151,7 @@ def get_package_count():
     with connection:
         with connection.cursor() as cursor:
             cursor.execute(
-                "SELECT package_name, count(*) as count FROM all_dependencies GROUP BY package_name ORDER BY count DESC")
+                "SELECT LOWER(package_name) AS lowercase_name, COUNT(*) AS count FROM all_dependencies GROUP BY lowercase_name ORDER BY count DESC")
             rows = cursor.fetchall()
 
             bom = Bom()

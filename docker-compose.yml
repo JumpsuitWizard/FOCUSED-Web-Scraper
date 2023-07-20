@@ -14,6 +14,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    links:
+      - selenium
 
   focused_webapp:
     restart: always
@@ -32,11 +34,12 @@ services:
       - postgres
 
   selenium:
-    platform: linux/amd64
-    build:
-      context: .
-      dockerfile: Dockerfile.selenium
-    container_name: selenium-container
+    image: seleniarm/standalone-chromium:102.0.5005.61
+    environment:
+      START_XVFB: 'false'
+      SE_NODE_MAX_SESSIONS: 5
+      JAVA_OPTS: "-XX:ActiveProcessorCount=5"
+      SE_NODE_OVERRIDE_MAX_SESSIONS: 5
 
   postgres:
     restart: always

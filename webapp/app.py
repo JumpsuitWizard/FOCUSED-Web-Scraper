@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from database import (
     get_all_dependencies,
     get_dependency_by_company,
@@ -8,6 +9,7 @@ from database import (
 )
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.get("/")
