@@ -5,7 +5,10 @@ from database import (
     get_dependency_by_company,
     get_common_dependency,
     get_list_dependencies,
-    get_package_count
+    get_package_count,
+    get_all_packages,
+    get_unique_package_count, 
+    get_package_percentage_count
 )
 
 app = Flask(__name__)
@@ -40,8 +43,23 @@ def get_list_dependencies_route(package_name):
     bom_dict = get_list_dependencies(package_name)
     return jsonify(bom_dict)
 
+@app.route("/dependencies/packages", methods=["GET"])
+def get_all_package_dependencies_route():
+    bom_dict = get_all_packages()
+    return jsonify(bom_dict)
+
 
 @app.route("/dependencies/package/count", methods=["GET"])
 def get_package_count_route():
     bom_dict = get_package_count()
+    return jsonify(bom_dict)
+
+@app.route("/dependencies/package/companies_with_max_unique_counts", methods=["GET"])
+def get_unique_package_count_route():
+    bom_dict = get_unique_package_count()
+    return jsonify(bom_dict)
+
+@app.route("/dependencies/package/package_percentage", methods=["GET"])
+def get_package_percentage_route():
+    bom_dict = get_package_percentage_count()
     return jsonify(bom_dict)

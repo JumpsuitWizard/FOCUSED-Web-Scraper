@@ -36,6 +36,16 @@ class Bom:
         }
         self.components.append(component)
 
+    def add_all_package_with_shared_consumer(self, component_type, name, version, shared_authors):
+        component = {
+            "type": component_type,
+            "name": name,
+            "version": version,
+            "shared_authors": shared_authors,
+        }
+        self.components.append(component)
+
+
     def to_dict(self):
         bom_dict = {
             "bomFormat": self.bom_format,

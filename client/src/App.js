@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
+import { Route, Routes } from "react-router-dom";
+import CompanyDetails from "./components/CompanyDetails";
+import Loader from "./components/Loader";
 
 export default function App() {
-  const [selectedLink, setSelectedLink] = useState("home");
+  const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState(null); 
-
-  const componentsMap = {
-    home: <Home data={data}/>,
-    dashboard: <Dashboard />
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
   };
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,8 +33,6 @@ export default function App() {
           return result;
         }, []);
         
-        console.log(transformedData);
-        
         setData(transformedData); 
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -43,14 +43,23 @@ export default function App() {
 
     
   }, []);
+    
+  const filteredData =
+    data &&
+    data.filter((value) =>
+      value.company_name.includes(searchTerm.toLowerCase())
+    );
+
 
   return (
     <div style={{ margin: 0, padding: 0, width: "100%", height: "100%" }}>
-      <Navbar selectedLink={selectedLink} setSelectedLink={setSelectedLink} />
-      <div className="mt-16">
-       {/* Check if data is available before rendering */}
-       {data ? componentsMap[selectedLink] : <p>Loading...</p>}
+      <Navbar searchTerm={searchTerm} handleSearch={handleSearch} /> 
+        {data === null ? <Loader />:
+        <Routes>
+          <Route path="/" exact element = { <Home data={filteredData} searchTerm ={searchTerm} /> }/>
+          <Route path="dashboard" exact element={ <Dashboard /> }/>
+          <Route path="/company/:companyName" exact element={ <CompanyDetails /> }/>
+        </Routes>}
       </div>
-    </div>
   );
 }

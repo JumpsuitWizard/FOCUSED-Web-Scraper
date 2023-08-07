@@ -7,10 +7,12 @@ module.exports = {
     extend: {
       height: {
         '100': '30rem',
+        '110' : '37rem'
         // Add more custom height classes as needed
       },
       width: {
-        '82': '24rem',
+        '100': '30rem',
+        '110' : '37rem'
         // Add more custom width classes as needed
       },
     },

@@ -1,47 +1,80 @@
-import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+import Modal from "./Popup";
+import { useState } from "react";
 
-const Companies = ({ data, handleCompanyName }) => {
+const Companies = ({ data }) => {
   return (
     <div className="mt-14 grid grid-cols-3 gap-4 gap-y-12">
       {data.map((company) => (
         <div
           key={company.index}
-          className="w-96 h-80 bg-zinc-100 rounded-lg p-6 relative"
+          className="w-96 h-80 bg-zinc-100 rounded-lg p-6 relative translate-z-10 shadow-md"
         >
-          <div className="w-96 h-10 text-black text-xl font-bold">
+          <div className="w-96 h-12 text-black text-opacity-70 text-xl absolute top-0 left-0 font-bold bg-cyan-600 bg-opacity-50 rounded-t-lg flex items-center pl-4">
             {company.company_name
               .toLowerCase()
               .replace(/\b\w/g, (l) => l.toUpperCase())}
           </div>
-          <div className="w-96 h-10 text-black text-xl font-bold">
+          <div className="mt-10 cursor-pointer">
+            <Badges key="Company Link" text="Company Link" type="random" />
+          </div>
+          <div className="w-96 h-10 mt-2 text-black text-xl font-bold">
             Dependencies
           </div>
           <div
             className="flex gap-2 flex-wrap"
-            style={{ maxHeight: "11rem", overflowY: "auto" }}
+            style={{ maxHeight: "8rem", overflowY: "auto" }}
           >
             {[...new Set(company.packages)].map((value) => (
-              <Badges key={value} text={value.toLowerCase()} />
+              <Badges key={value} text={value.toLowerCase()} type="package" />
             ))}
           </div>
-          <button
-            type="button"
-            onClick={() => handleCompanyName(company.company_name)}
-            className="absolute bottom-3 right-6 cursor-pointer"
+          <Link
+            to={`/company/${company.company_name}`}
+            className="absolute bottom-3 right-6 cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-125 hover:translate-x-1"
           >
             <FaArrowRightLong size={24} />
-          </button>
+          </Link>
         </div>
       ))}
     </div>
   );
 };
 
-export const Badges = ({ text }) => {
+export const Badges = ({ text, type, highlight }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  console.log(text);
+  console.log(highlight);
+  const handleOpenModal = () => {
+    console.log(isModalOpen);
+    if (!isModalOpen) setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    console.log("n");
+    setIsModalOpen(false);
+  };
   return (
-    <div className="inline-block h-9 rounded-lg border border-neutral-400 px-2 py-1">
-      <div className="text-blue-950 text-base font-medium">{text}</div>
+    <div
+      className={`inline-block rounded-lg border border-neutral-400 px-2 py-1 cursor-pointer ${
+        highlight ? "bg-cyan-600 bg-opacity-50" : ""
+      } hover:bg-cyan-600 hover:bg-opacity-50`}
+    >
+      <div
+        className="text-blue-950 text-base font-medium "
+        onClick={handleOpenModal}
+      >
+        {text}
+      </div>
+      {isModalOpen && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          text={text}
+          type={type}
+        />
+      )}
     </div>
   );
 };
