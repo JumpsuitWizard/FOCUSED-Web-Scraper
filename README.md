@@ -141,6 +141,12 @@ There are 4 GET API calls to get the data
    http://127.0.0.1:4000/dependencies/package/react
   ```
 
+# To run the React Application
+
+  ```sh
+   http://localhost:3000/
+  ```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
