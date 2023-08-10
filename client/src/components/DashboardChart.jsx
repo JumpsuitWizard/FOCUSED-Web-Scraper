@@ -6,7 +6,6 @@ import {
   BarController,
   BarElement,
 } from "chart.js";
-import { useState } from "react";
 import { BarChart } from "./BarChart";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
@@ -19,7 +18,7 @@ Chart.register(
 );
 
 export default function DashboardChart({ data }) {
-  const [chartData, setChartData] = useState({
+  const chartData = {
     labels: data.map((data) => data.name),
     plugins: [ChartDataLabels],
     datasets: [
@@ -54,7 +53,7 @@ export default function DashboardChart({ data }) {
         barThickness: 13, // Set the width of each bar in pixels
       },
     ],
-  });
+  };
 
   const options = {
     indexAxis: "y", // This option sets the axis to be horizontal

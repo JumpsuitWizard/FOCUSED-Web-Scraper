@@ -6,13 +6,12 @@ import {
   BarController,
   BarElement,
 } from "chart.js";
-import { useState } from "react";
 import { BarChart } from "./BarChart";
 
 Chart.register(CategoryScale, LinearScale, BarController, BarElement);
 
 export default function VerticalChart({ data }) {
-  const [chartData, setChartData] = useState({
+  const chartData = {
     labels: data.map((data) => data.name),
     datasets: [
       {
@@ -39,7 +38,7 @@ export default function VerticalChart({ data }) {
         borderRadius: 10, // Set the border radius for rounded corners
       },
     ],
-  });
+  };
 
   const options = {
     plugins: {
