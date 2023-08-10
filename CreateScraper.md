@@ -2,19 +2,10 @@
 
 This template provides a basic structure for creating a web scraper using BeautifulSoup and requests. Replace the specific details such as target URL and database configurations with your desired values.
 
-## Requirements
-
-To run this scraper, you need to have the following installed:
-
-- Python (version 3.x recommended)
-- BeautifulSoup (BeautifulSoup4)
-- requests
-- psycopg2 (if you intend to store data in a PostgreSQL database)
-
-You can install these dependencies using pip:
+You need to add the company url in urls.py:
 
 ```bash
-pip install beautifulsoup4 requests psycopg2
+YOUR_COMPANY_URL = 'https://www.example.com'
 ```
 
 # If the scraping doesn't need selenium then use the below template
@@ -24,6 +15,7 @@ pip install beautifulsoup4 requests psycopg2
     import requests
     from utils.database import Database
     from utils.utility import remove_at_symbol
+    #import the url
     from config.urls import { YOUR_URL }
 
 

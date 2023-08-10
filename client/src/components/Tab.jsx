@@ -8,7 +8,13 @@ const Tab = ({ title, selected, onSelect }) => {
       } flex justify-center items-center cursor-pointer`}
       onClick={() => onSelect(title)}
     >
-      <div className={`text-2xl font-normal uppercase ${selected ? "text-white" : "text-black"}`}>{title}</div>
+      <div
+        className={`text-2xl font-normal uppercase ${
+          selected ? "text-white" : "text-black"
+        }`}
+      >
+        {title}
+      </div>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 const Modal = ({ isOpen, onClose, text, type }) => {
   const [data, setData] = useState(null);
-  console.log(text);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -15,7 +14,6 @@ const Modal = ({ isOpen, onClose, text, type }) => {
           const transformedData = new Set(
             data.components.map((value) => value.company.name)
           );
-          console.log(transformedData);
           setData([...transformedData]);
         } else if (type === "company") {
           const response = await fetch(
@@ -26,7 +24,6 @@ const Modal = ({ isOpen, onClose, text, type }) => {
           const transformedData = new Set(
             data.components.map((value) => value.name)
           );
-          console.log(transformedData);
           setData([...transformedData]);
         }
       } catch (error) {

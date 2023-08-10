@@ -1,33 +1,32 @@
-// utils/Data.js
-export const Data = [
-    {
-      id: 1,
-      year: 2016,
-      userGain: 80000,
-      userLost: 823
-    },
-    {
-      id: 2,
-      year: 2017,
-      userGain: 45677,
-      userLost: 345
-    },
-    {
-      id: 3,
-      year: 2018,
-      userGain: 78888,
-      userLost: 555
-    },
-    {
-      id: 4,
-      year: 2019,
-      userGain: 90000,
-      userLost: 4555
-    },
-    {
-      id: 5,
-      year: 2020,
-      userGain: 4300,
-      userLost: 234
-    }
-  ];
+export const links = {
+  SPOTIFY: "https://developer.spotify.com/third-party-licenses#embedded-sdk-third-party-licenses",
+  DISCORD: "https://discord.com/licenses",
+  PORSCHE: "https://connect-store.porsche.com/licenses.txt",
+  SLACK: "https://slack.com/libs/desktop",
+  SAMSUNG: "https://developer.samsung.com/open-source?location=us",
+  CISCO: "https://www.cisco.com/en/US/docs/security/csa/csa602/license/opensource_thirdparty.html",
+  BROADCOM: "https://techdocs.broadcom.com/us/en/symantec-security-software/identity-security/identity-suite/14-4/third-party-license-acknowledgments.html",
+  CONFLUENT: "https://www.confluent.io/third_party_software/platform/",
+  APPLE_MAPS: "https://www.apple.com/legal/internet-services/maps/oss-acknowledgements/",
+  BOSCH: "https://developer.bosch.com/3rdpartylicenses.html",
+  SMARTSHEET: "https://www.smartsheet.com/legal/acknowledgements",
+  META_RAY_BAN: "https://www.meta.com/legal/ray-ban-stories/third-party-notices-android/",
+  PANAPTO: "https://support.panopto.com/s/article/open-source-acknowledgements",
+  ADLOCK: "https://adlock.com/acknowledgements/",
+  BOCADA: "https://www.bocada.com/third-party-licenses/",
+  SPARK_TRADER: "https://sparktrader.com/credits",
+  CAMUNDA: "https://docs.camunda.org/manual/7.19/introduction/third-party-libraries/camunda-bpm-platform-license-book/",
+  ORACLE_FUSION: "https://docs.oracle.com/en/middleware/fusion-middleware/fmwlc/third-party-licenses-z-new-structure-new-topic.html#GUID-0B3F8A49-094C-496F-831F-8E8D39F72787",
+  BOX: "https://www.box.com/legal/acknowledgements",
+  PARASOFT: "https://docs.parasoft.com/display/JTEST1042/Third-Party+Acknowledgements",
+  COGNITION: "https://www.cognition.run/acknowledgements",
+  SHOOTT: "https://www.shoott.com/acknowledgements",
+  CLUE_IO: "https://clue.io/acknowledgements",
+  NVIDIA: "https://docs.nvidia.com/tao/tao-toolkit/text/acknowledgements.html",
+  VEERTU: "https://docs.veertu.com/mac-scan/third-party-license-acknowledgements/",
+  GENESIS: "http://webmanual.genesis.com/ccIC/AVNT/JW/KOR/Korean/reference010.html",
+  PARSEC: "https://parsec.app/acknowledgements",
+  SPACETI: "https://www.spaceti.com/support/license/",
+  FLEXERA: "https://docs.rightscale.com/platform/open-source-ack/",
+  GIPHY: "https://support.giphy.com/hc/en-us/articles/360041802712-GIPHY-Android-Open-Source-Acknowledgements"
+};

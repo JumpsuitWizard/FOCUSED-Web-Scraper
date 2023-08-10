@@ -1,9 +1,19 @@
 import { FaArrowRightLong } from "react-icons/fa6";
+import { GoLink } from "react-icons/go";
 import { Link } from "react-router-dom";
 import Modal from "./Popup";
 import { useState } from "react";
+import { links } from "./data";
 
 const Companies = ({ data }) => {
+  const getURL = (name) => {
+    const formattedName = name.replace(/\s+/g, "_").toLowerCase();
+    const matchingKey = Object.keys(links).find((key) =>
+      key.toLowerCase().includes(formattedName)
+    );
+    return matchingKey ? links[matchingKey] : null;
+  };
+
   return (
     <div className="mt-14 grid grid-cols-3 gap-4 gap-y-12">
       {data.map((company) => (
@@ -17,7 +27,19 @@ const Companies = ({ data }) => {
               .replace(/\b\w/g, (l) => l.toUpperCase())}
           </div>
           <div className="mt-10 cursor-pointer">
-            <Badges key="Company Link" text="Company Link" type="random" />
+            <button
+              onClick={() => {
+                const url = getURL(company.company_name);
+                if (url) {
+                  window.open(url, "_blank");
+                }
+              }}
+              key="Company Link"
+              className="inline-flex items-center py-1 cursor-pointer text-base font-medium hover:text-cyan-600"
+            >
+              Company Link
+              <GoLink className="ml-2" />
+            </button>
           </div>
           <div className="w-96 h-10 mt-2 text-black text-xl font-bold">
             Dependencies
@@ -44,15 +66,11 @@ const Companies = ({ data }) => {
 
 export const Badges = ({ text, type, highlight }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(text);
-  console.log(highlight);
   const handleOpenModal = () => {
-    console.log(isModalOpen);
     if (!isModalOpen) setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    console.log("n");
     setIsModalOpen(false);
   };
   return (

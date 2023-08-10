@@ -43,7 +43,7 @@ const CompanyDetails = () => {
     };
 
     fetchData();
-  }, []);
+  }, [companyName]);
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -119,7 +119,7 @@ const CompanyDetails = () => {
               onChange={handleOptionChange}
             />
             <label htmlFor="checkbox-strict" className="ml-2 text-gray-700">
-              Strictly Common
+              Only show shared dependencies
             </label>
           </div>
 
@@ -147,10 +147,10 @@ const CompanyDetails = () => {
           </div>
         </div>
         <div className="h-110 overflow-y-auto">
-          <table>
+          <table className="table-auto border-collapse">
             <thead className="bg-cyan-600 bg-opacity-50 sticky top-0">
               <tr>
-                <th className="px-6 py-3 text-left font-medium text-black uppercase tracking-wider w-4">
+                <th className="px-6 py-3 text-left font-medium text-black uppercase tracking-wider w-4 border-r-4 border-black">
                   Dependency
                 </th>
                 <th className="px-6 py-3 text-left font-medium text-black uppercase tracking-wider">
@@ -161,7 +161,7 @@ const CompanyDetails = () => {
             <tbody className="bg-white divide-y divide-gray-200">
               {filteredCompanyData.map((value, i) => (
                 <tr key={i}>
-                  <td className="px-6 py-4 min-w-min">
+                  <td className="px-6 py-4 min-w-min border-r-4 border-black">
                     <Badges text={value.name} type="package" />
                   </td>
                   {value.shared_authors.length > 0 ? (

@@ -75,6 +75,7 @@ We have the following Scrapers:
 * [![Beautiful Soup][Beautifulsoup.com]][Beautifulsoup-url]
 * [![Flask][Flask.com]][Flask-url]
 * [![Docker][Docker.com]][Docker-url]
+* [![React][React.com]][React-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -191,3 +192,5 @@ Team at Open@RIT
 [Flask-url]: https://flask.palletsprojects.com/en/2.3.x/
 [Docker.com]: https://img.shields.io/badge/Docker-4F4B55?style=for-the-badge&logo=docker&logoColor=FF3E00
 [Docker-url]: https://www.docker.com/
+[React.com]: https://img.shields.io/badge/React-4F4B55?style=for-the-badge&logo=react&logoColor=61DBFB
+[React-url]: https://react.dev/

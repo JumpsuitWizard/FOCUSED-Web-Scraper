@@ -13,9 +13,9 @@ const Dependencies = ({ data }) => {
   return (
     <>
       <div className="mt-14 grid grid-cols-3 gap-4 mx-4 my-4 gap-y-12">
-        {data.slice(0, visibleItems).map((value) => (
+        {data.slice(0, visibleItems).map((value, index) => (
           <div
-            key={value.index}
+            key={index}
             className="w-96 bg-zinc-100 rounded-lg p-6 relative translate-z-10 shadow-md"
           >
             <div className="w-96 h-12 text-black text-opacity-70 text-xl absolute top-0 left-0 font-bold bg-cyan-600 bg-opacity-50 rounded-t-lg flex items-center pl-4">
