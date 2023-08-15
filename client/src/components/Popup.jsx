@@ -5,8 +5,10 @@ const Modal = ({ isOpen, onClose, text, type }) => {
     const fetchData = async () => {
       try {
         if (type === "package") {
+          const encodedPackageName = encodeURIComponent(text);
+          console.log(encodedPackageName);
           const response = await fetch(
-            `http://127.0.0.1:4000/dependencies/package/${text}`
+            `http://127.0.0.1:4000/dependencies/package/${encodedPackageName}`
           );
 
           const data = await response.json();

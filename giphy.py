@@ -32,7 +32,6 @@ def scrape_dependencies():
         match = re.search(pattern, package_name, re.MULTILINE)
         if match:
             name = match.group(1)
-            print(name)
             version = match.group(2)
             if name.lower() not in package_name_set:
                 package_name_set.add(name.lower())

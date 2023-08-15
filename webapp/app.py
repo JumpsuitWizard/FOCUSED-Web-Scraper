@@ -10,6 +10,8 @@ from database import (
     get_unique_package_count, 
     get_package_percentage_count
 )
+from urllib.parse import unquote
+
 
 app = Flask(__name__)
 CORS(app)
@@ -40,7 +42,8 @@ def get_common_dependency_route(company, package_name):
 
 @app.route("/dependencies/package/<package_name>", methods=["GET"])
 def get_list_dependencies_route(package_name):
-    bom_dict = get_list_dependencies(package_name)
+    decoded_package_name = unquote(package_name)
+    bom_dict = get_list_dependencies(decoded_package_name)
     return jsonify(bom_dict)
 
 @app.route("/dependencies/packages", methods=["GET"])
