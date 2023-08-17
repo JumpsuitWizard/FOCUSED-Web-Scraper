@@ -6,7 +6,7 @@ const Modal = ({ isOpen, onClose, text, type }) => {
       try {
         if (type === "package") {
           const response = await fetch(
-            `http://127.0.0.1:4000/dependencies/package/${text}`
+            `http://127.0.0.1:4000/dependencies/package?package_name=${text}`
           );
 
           const data = await response.json();

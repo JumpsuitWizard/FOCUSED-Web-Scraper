@@ -110,7 +110,7 @@ const CompanyDetails = () => {
             value={searchTerm}
             onChange={handleSearch}
           />
-          <div className="flex items-center mt-3">
+          <div className="flex items-center mt-3 ml-8">
             <input
               type="checkbox"
               id="checkbox-strict"
@@ -150,7 +150,7 @@ const CompanyDetails = () => {
           <table className="table-auto border-collapse">
             <thead className="bg-cyan-600 bg-opacity-50 sticky top-0">
               <tr>
-                <th className="px-6 py-3 text-left font-medium text-black uppercase tracking-wider w-4 border-r-4 border-black">
+                <th className="px-6 py-3 text-left font-medium text-black uppercase tracking-wider w-4">
                   Dependency
                 </th>
                 <th className="px-6 py-3 text-left font-medium text-black uppercase tracking-wider">
@@ -161,7 +161,7 @@ const CompanyDetails = () => {
             <tbody className="bg-white divide-y divide-gray-200">
               {filteredCompanyData.map((value, i) => (
                 <tr key={i}>
-                  <td className="px-6 py-4 min-w-min border-r-4 border-black">
+                  <td className="px-6 py-4 min-w-min border-r-4 border-gray-600">
                     <Badges text={value.name} type="package" />
                   </td>
                   {value.shared_authors.length > 0 ? (

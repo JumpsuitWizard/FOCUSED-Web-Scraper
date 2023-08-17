@@ -26,7 +26,6 @@ def scrape_dependencies():
     package_name_set = set()
 
     for element in dependencies:
-        print(element.text)
         if element.text.lower() not in package_name_set:
             package_name_set.add(element.text.lower())
             db.insert_dependency(element.text.lower(),

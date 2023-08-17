@@ -54,10 +54,21 @@ class Database:
         cursor.close()
 
     def insert_dependency(self, package_name, table_name, company_name, package_version=None):
-        insert_query = f"INSERT INTO {table_name} (company_name, package_name, package_version) VALUES (%s, %s, %s)"
-        values = (company_name, package_name, package_version)
+        select_query = f"SELECT id FROM {table_name} WHERE company_name = %s AND package_name = %s"
+        select_values = (company_name, package_name)
 
         cursor = self.connection.cursor()
-        cursor.execute(insert_query, values)
-        self.connection.commit()
+        cursor.execute(select_query, select_values)
+        existing_row = cursor.fetchone()
+
+        if not existing_row:
+            insert_query = f"INSERT INTO {table_name} (company_name, package_name, package_version) VALUES (%s, %s, %s)"
+            insert_values = (company_name, package_name, package_version)
+
+            cursor.execute(insert_query, insert_values)
+            self.connection.commit()
+            print("Data inserted successfully.")
+        else:
+            print("Data already exists, not inserting.")
+
         cursor.close()

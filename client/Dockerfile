@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Set the environment variable for React production build
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 
 # Expose the port your React app is running on (if you are using a different port, replace 3000 with your port number)
 EXPOSE 3000
