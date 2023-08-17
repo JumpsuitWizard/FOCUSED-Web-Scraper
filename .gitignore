@@ -162,3 +162,4 @@ cython_debug/
 *.pyc
 __pycache__
 client/node_modules/
+/node_modules

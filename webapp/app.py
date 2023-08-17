@@ -40,12 +40,16 @@ def get_common_dependency_route(company, package_name):
     return jsonify(bom_dict)
 
 
-@app.route("/dependencies/package/", methods=["GET"])
+@app.route("/dependencies/package", methods=["GET"])
 def get_list_dependencies_route():
-    package_name = request.args.get("package_name")
-    decoded_package_name = unquote(package_name)
-    bom_dict = get_list_dependencies(decoded_package_name)
-    return jsonify(bom_dict)
+    package_name = request.args.get('package_name')
+    print(package_name)
+    if package_name:
+        bom_dict = get_list_dependencies(package_name)
+        return jsonify(bom_dict)
+    else:
+        return jsonify({"error": "Package name parameter is missing"}), 400
+
 
 @app.route("/dependencies/packages", methods=["GET"])
 def get_all_package_dependencies_route():
