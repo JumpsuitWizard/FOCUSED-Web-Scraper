@@ -162,4 +162,11 @@ cython_debug/
 *.pyc
 __pycache__
 client/node_modules/
-/node_modules
+
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Generally ignored files
+.DS_Store
