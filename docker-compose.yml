@@ -72,6 +72,8 @@ services:
         - "3000:3000"
       depends_on:
         - focused_webapp
+      volumes:
+        - ./client/src:/usr/src/app/src
 
 volumes:
   db-data:
